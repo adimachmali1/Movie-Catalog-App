@@ -39,5 +39,5 @@ https://adimachmali1.github.io/movie-catalog-app/
 
 # How to run
 
-npm i
-npm run dev
+1. npm i
+2. npm run dev
