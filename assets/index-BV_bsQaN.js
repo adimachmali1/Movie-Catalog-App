@@ -202,4 +202,4 @@ Please change the parent <Route path="${M}"> to <Route path="${M==="/"?"*":`${M}
   button {
     cursor: pointer;
   }
-`,zS=()=>Se.jsxs(Se.Fragment,{children:[Se.jsx(jS,{}),Se.jsx(N0,{children:Se.jsxs(s0,{children:[Se.jsx(Uu,{path:"/",element:Se.jsx(PS,{})}),Se.jsx(Uu,{path:"/details/:id",element:Se.jsx(MS,{})})]})})]}),US=new Jg;Fg.createRoot(document.getElementById("root")).render(Se.jsx(Ln.StrictMode,{children:Se.jsx(rv,{client:US,children:Se.jsx(zS,{})})}));
+`,zS=()=>Se.jsxs(Se.Fragment,{children:[Se.jsx(jS,{}),Se.jsx(N0,{basename:"/movie-catalog-app/",children:Se.jsxs(s0,{children:[Se.jsx(Uu,{path:"/",element:Se.jsx(PS,{})}),Se.jsx(Uu,{path:"/details/:id",element:Se.jsx(MS,{})})]})})]}),US=new Jg;Fg.createRoot(document.getElementById("root")).render(Se.jsx(Ln.StrictMode,{children:Se.jsx(rv,{client:US,children:Se.jsx(zS,{})})}));
