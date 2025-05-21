@@ -25,29 +25,61 @@ const BackButton = styled.button`
   }
 `;
 
+const Header = styled.header`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
 const Poster = styled.img`
   width: 300px;
   border-radius: 8px;
   margin-right: 2rem;
   object-fit: cover;
-`;
 
-const Header = styled.header`
-  display: flex;
-  align-items: flex-start;
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 250px;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
 `;
 
 const Info = styled.div`
   max-width: 550px;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    max-width: 100%;
+  }
 `;
 
 const Title = styled.h1`
   margin: 0;
   font-size: 2rem;
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Overview = styled.p`
   line-height: 1.4;
+  margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    margin: 1rem 4rem 0 4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin: 1rem 0 0 0;
+  }
 `;
 
 const Button = styled.button<{ active?: boolean }>`
@@ -100,10 +132,21 @@ const Details = () => {
         ← Back
       </BackButton>
       <Header>
-        {movie.poster_path && (
+        {movie.poster_path ? (
           <Poster
             src={`${IMG_BASE}${movie.poster_path}`}
             alt={`${movie.title} poster`}
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.onerror = null; // Prevent infinite loop
+              target.src = `${import.meta.env.BASE_URL}Movie-theatre-camera.jpg`;
+            }}
+          />
+        ) : (
+          <Poster
+            src={`${import.meta.env.BASE_URL}Movie-theatre-camera.jpg`}
+            aria-label="No poster available"
+            loading="lazy"
           />
         )}
         <Info>
