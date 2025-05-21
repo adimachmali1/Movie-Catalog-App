@@ -14,25 +14,32 @@ const Card = styled.article`
   width: 200px;
   margin: 0.5rem;
   box-shadow: 0 0 8px #000;
+
+  @media (max-width: 480px) {
+    width: 300px;
+    margin: 0.5rem 0;
+  }
 `;
 
 const Poster = styled.img`
-  width: 100%;
+  width: 200px;
   height: 300px;
   object-fit: cover;
   background-color: #444;
-`;
 
-const Info = styled.div`
-  padding: 0.5rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  @media (max-width: 480px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const Title = styled.h3`
   margin: 0.25rem 0;
   font-size: 1.1rem;
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
 
 const Button = styled.button<{ active?: boolean }>`
@@ -48,6 +55,18 @@ const Button = styled.button<{ active?: boolean }>`
   &:hover {
     background: ${({ active }) => (active ? '#b0070f' : '#666')};
   }
+
+  @media (max-width: 470px) {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+  }
+`;
+
+const Info = styled.div`
+  padding: 0.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Rating = styled.div`
@@ -76,12 +95,17 @@ const MovieCard = ({ movie }: Props) => {
             src={`${IMG_BASE}${movie.poster_path}`}
             alt={`Poster of ${movie.title}`}
             loading="lazy"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.onerror = null; // Prevent infinite loop
+              target.src = `${import.meta.env.BASE_URL}Movie-theatre-camera.jpg`;
+            }}
           />
         ) : (
           <Poster
-            as="div"
+            src={`${import.meta.env.BASE_URL}Movie-theatre-camera.jpg`}
             aria-label="No poster available"
-            style={{ height: 300, backgroundColor: '#666' }}
+            loading="lazy"
           />
         )}
       </Link>
