@@ -5,7 +5,7 @@ import { isInWatchlist, toggleWatchlist } from '../utils/watchlist';
 import type { Movie } from '../types';
 
 const Card = styled.article`
-  background: #222;
+  background: #282828;
   border-radius: 8px;
   overflow: hidden;
   color: #fff;
