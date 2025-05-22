@@ -1,4 +1,4 @@
-const WATCHLIST_KEY = "movie_watchlist";
+const WATCHLIST_KEY = 'movie_watchlist';
 
 export const getWatchlist = (): number[] => {
   const stored = localStorage.getItem(WATCHLIST_KEY);
