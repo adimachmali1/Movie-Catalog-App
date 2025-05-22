@@ -48,26 +48,26 @@ const Grid = styled.section`
 
 const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchTerm = searchParams.get('q') || ''; // from the URL
+  const searchTerm = searchParams.get('q') || '';
 
-  const [inputValue, setInputValue] = useState(searchTerm); // local input value
+  const [inputValue, setInputValue] = useState(searchTerm);
 
   const debouncedUpdateQuery = useMemo(() => {
     return debounce((value: string) => {
-      setSearchParams(value ? { q: value } : {}); // updates URL
+      setSearchParams(value ? { q: value } : {});
     }, 300);
   }, [setSearchParams]);
 
   useEffect(() => {
     return () => {
-      debouncedUpdateQuery.cancel(); // cleanup
+      debouncedUpdateQuery.cancel();
     };
   }, [debouncedUpdateQuery]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setInputValue(value); // update input field immediately
-    debouncedUpdateQuery(value); // update URL after debunce
+    setInputValue(value);
+    debouncedUpdateQuery(value);
   };
 
   const { data, isLoading } = useQuery({

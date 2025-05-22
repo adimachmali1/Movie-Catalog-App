@@ -33,7 +33,7 @@ allow users to perform the following actions:
    • Deploy to a free hosting service (Vercel, Netlify, GitHub Pages, etc.)
    Include the deployed URL in your README.
 
-# Github pages
+# Github Pages Demo
 
 https://adimachmali1.github.io/movie-catalog-app/
 
